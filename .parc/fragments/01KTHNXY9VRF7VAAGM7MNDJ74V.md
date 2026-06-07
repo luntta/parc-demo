@@ -1,0 +1,19 @@
+---
+id: 01KTHNXY9VRF7VAAGM7MNDJ74V
+type: decision
+title: 'Authentication: JWT access tokens with rotating refresh tokens'
+tags:
+- auth
+- security
+links:
+- 01KTHNYBT13YCDTNJ7CEC4BZXW
+status: accepted
+created_at: 2026-06-07T18:36:10Z
+updated_at: 2026-06-07T18:38:43Z
+---
+
+Context: need stateless API auth across web and future mobile/API clients.
+
+Decision: short-lived (15 min) JWT access tokens carrying user_id and tenant_id, plus long-lived refresh tokens stored server-side and rotated on each use (reuse detection revokes the family). Access tokens are verified at the edge; tenant_id from the token drives the Postgres RLS session context.
+
+Consequences: revocation of access tokens is delayed until expiry — keep TTL short. Refresh token store adds state to an otherwise stateless design. Token must be treated as the tenant boundary, so signing-key compromise is catastrophic.

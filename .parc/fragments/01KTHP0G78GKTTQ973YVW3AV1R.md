@@ -1,0 +1,16 @@
+---
+id: 01KTHP0G78GKTTQ973YVW3AV1R
+type: todo
+title: Distributed tracing and structured logging (observability baseline)
+tags:
+- infra
+links:
+- 01KTHP0G7MC1DHVQ6QWACT5BE6
+- 01KTHNYY5MBB634ASSVA9S4T07
+priority: medium
+status: open
+created_at: 2026-06-07T18:37:34Z
+updated_at: 2026-06-07T18:38:43Z
+---
+
+OpenTelemetry traces across BFF -> API -> workers -> DB, with tenant_id as a span attribute, plus structured JSON logs and dashboards/alerts. Hard to debug multi-tenant issues without it.

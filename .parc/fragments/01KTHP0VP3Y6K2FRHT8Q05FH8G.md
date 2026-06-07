@@ -1,0 +1,14 @@
+---
+id: 01KTHP0VP3Y6K2FRHT8Q05FH8G
+type: idea
+title: Public status page with automated incident updates
+tags:
+- infra
+links:
+- 01KTHNYY7C2P44GPFH53VW5ZCT
+status: raw
+created_at: 2026-06-07T18:37:46Z
+updated_at: 2026-06-07T18:38:43Z
+---
+
+A hosted status page wired to our monitoring so customers self-serve during incidents and we cut support load. Supports trust/credibility for enterprise buyers.

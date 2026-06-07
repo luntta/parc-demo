@@ -1,0 +1,20 @@
+---
+id: 01KTHNYY5MBB634ASSVA9S4T07
+type: risk
+title: Database connection pool exhaustion under load
+tags:
+- database
+- infra
+links:
+- 01KTHNXY90
+- 01KTHP0G4B66Y2M699ZVWSP0DC
+- 01KTHP0G78GKTTQ973YVW3AV1R
+impact: high
+likelihood: medium
+mitigation: Front Postgres with a transaction-mode pooler (PgBouncer/RDS Proxy); cap per-service pool sizes; statement_timeout to release stuck connections; load test connection behaviour before launch.
+status: identified
+created_at: 2026-06-07T18:36:43Z
+updated_at: 2026-06-07T18:38:43Z
+---
+
+Per-request tenant context plus serverless/edge functions can open many short-lived connections. Postgres has a hard connection ceiling; bursts (or a slow query holding connections) exhaust the pool and cause cascading 5xx across all tenants — a noisy-neighbour amplifier.
